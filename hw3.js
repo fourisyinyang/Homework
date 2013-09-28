@@ -99,7 +99,9 @@
 		return location;
 	}
 
+	// Test false condition
 	console.log(whereYouAre('Thursday', '6:30 PM', 'HU 327'));
+	// Test true condition
 	console.log(whereYouAre('Thursday', '6:30 PM', 'HU 317'));
 
 
