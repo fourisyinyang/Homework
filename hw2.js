@@ -39,17 +39,19 @@
 		zipCode,
 		valPi,
 		bookAfterTax,
-		lightSwitch,
-		supermanFly;
+		lightSwitchIsOn,
+		supermanCanFly;
 
 	myEmail = 'stan13@montgomerycollege.edu';
 	myMajor = 'Computer Science';
 	myEditor = 'Sublime Text 2';
 	zipCode = 20850;
 	valPi = 3.14159;
-	bookAfterTax = 10 + 10 * .05;
-	lightSwitch = true;
-	supermanFly = true;
+	bookAfterTax = 10 * 1.05; //JG: I think this formula is clearer
+	lightSwitchIsOn = true;
+	supermanCanFly = true;
+
+	//JG: Nice work with the console.log statements!
 
 	console.log('My email address is ' + myEmail + '.');
 	console.log('My major is ' + myMajor + '.');
@@ -57,8 +59,8 @@
 	console.log('My zip code is ' + zipCode + '.');
 	console.log('The value of pi up to 5 decimal place is ' + valPi + '.');
 	console.log('The total cost of a 10 dollar book plus 5% sales tax is $' + bookAfterTax + '.');
-	console.log('The light switch is on? ' + lightSwitch);
-	console.log('Superman can fly? ' + supermanFly);	
+	console.log('The light switch is on? ' + lightSwitchIsOn);
+	console.log('Superman can fly? ' + supermanCanFly);	
 
 // Problem 3) Use the typeof operator to determine the data type of each variable like so.
 	// console.log(typeof myEmail);
@@ -72,8 +74,8 @@
 	console.log(typeof zipCode);
 	console.log(typeof valPi);
 	console.log(typeof bookAfterTax);
-	console.log(typeof lightSwitch);
-	console.log(typeof supermanFly);
+	console.log(typeof lightSwitchIsOn);
+	console.log(typeof supermanCanFly);
 
 // Problem 4) Create string variables to store the following string values.
 // Send all variables to the console.
@@ -101,6 +103,10 @@
 	var topics,
 		i;
 
+	//JG: Very good topics! Dynamic typing is something we've seen since day one. When you create a variable you are essentially determining its data type at runtime. The data type is determined by what the variable contains.
+	// Functions as first-class objects are seen when you can assign functions to variables. Functions themselves are also objects.
+	// If by Web usage you mean how to program UI components such as modal windows, tabs, and drag and drop then indeed we will go over those topics.
+
 	topics = [
 		'Dynamic typing',
 		'First-class functions',
@@ -108,12 +114,14 @@
 		'Run-time environment',
 		'Array and object literals',
 		'Web usage'
-		];
+	];
 
 	console.log(topics);
 
 /*
 	Do I use the above code to show my array or I should use the following?
+
+	//JG: Since we didn't cover loops you could do it either way. If you have a whole array and you want to simply display it for debugging purposes than one simple console.log statement is good enough.
 
 	for (i=0; i<topics.length; i++){
 		console.log(topics[i]); 
@@ -150,4 +158,4 @@
 		console.log('Leave me alone');
 	}
 
-// JG: Testing 1,2,3
+// JG: Really great submission!

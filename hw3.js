@@ -22,10 +22,10 @@
 	// 5 times 5
 	// 5 divided by 5
 
-	console.log(5+5);
-	console.log(5-5);
-	console.log(5*5);
-	console.log(5/5);
+	console.log(5 + 5);
+	console.log(5 - 5);
+	console.log(5 * 5);
+	console.log(5 / 5);
 
 
 // Problem 2
@@ -128,11 +128,14 @@
 
 	var bartSimpson = '',
 		bartSimpson2 = '',
-		i = 10;
+		i = 10,
+		j;
 
 	while (i > 0) {
 		bartSimpson += 'I will not make fun of the teacher using JavaScript code. ';
-		i --;
+
+		//JG: Counting backwards is an interesting approach. Looks good!
+		i -= 1;
 	}
 
 	console.log(bartSimpson);
@@ -141,8 +144,11 @@
 // Problem 5
 	// Do the same as you did in question 4 but write it as a for loop.
 
-	for (j=0; j<10; j++) {
+	//JG: I'm inserting spaces around the operators
+	for (j = 0; j < 10; j++) {
 		bartSimpson2 += 'I will not make fun of the teacher using JavaScript code. ';
 	}
 
 	console.log(bartSimpson2);
+
+//JG: Great work!
