@@ -3,8 +3,9 @@
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta charset="UTF-8">
 	<title>midterm</title>
-	<link rel="stylesheet" type="text/css" href="./midterm-files/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="./midterm-files/styles.css">
+	<!-- These were throwing errors in the console. They were files used to style the HTML. No points lost. -->
+	<!-- <link rel="stylesheet" type="text/css" href="./midterm-files/bootstrap.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="./midterm-files/styles.css"> -->
 </head>
 <body>
 	<section class="container">
@@ -93,25 +94,32 @@
 		// Problem 2
 		
 		var drinkCostAfterTax = 20 * 1.25,
-			phoneCostAfterDiscount = 400 * .85,
+			phoneCostAfterDiscount = 400 * 0.85,
 			costFourSandwich = 4 * 5,
 			costDinnerForFivePpl = 75 / 5,
-			someProblem = .1 * .2;
+			someProblem = 0.1 * 0.2;
 
 		console.log(drinkCostAfterTax);
 		console.log(phoneCostAfterDiscount);
 		console.log(costFourSandwich);
 		console.log(costDinnerForFivePpl);
 		console.log(Math.round(someProblem * 100) / 100);
+		//JG: I find it interesting that your technique works. It's an interesting formula to say the least. I would've done the one below for readability's sake.
+		console.log(someProblem.toFixed(2));
 		
-		//console.log(someProblem.toFixed(2));  Will this work better? But it converted the number to string.
+		//Will this work better? But it converted the number to string.
+
+		//JG: That's a good point. I personally prefer toFixed since it's easier to read. 
+		// I think having it act as a string is fine since toFixed is typically used for 
+		// display purposes. I doubt it would make sense to use toFixed(x) within a series of 
+		// calculations. Using it once at the end for display is good enough.
 		
 		// Problem 3
 
 		var myEditor = 'Sublime Text';
 		
 		function checkEditor(myEditor) {
-
+			//JG: I like the use of line breaks to split up variable intiailizations from the function body and the return statement.
 			var message;
 
 			if (myEditor === 'Eclipse') {
@@ -139,26 +147,40 @@
 		
 		// Problem 5
 		
-		var num1, num2, num3;
+		//JG: These don't seem to be used anywhere
+		// var num1, num2, num3;
 
 		function avgOfThree (num1, num2, num3) {
 
-			if(typeof num1 !== 'number' || typeof num1 !== 'number' || typeof num1 !== 'number'){
+			if (typeof num1 !== 'number' || typeof num1 !== 'number' || typeof num1 !== 'number'){
+				//JG: Clever use of the Number object
 				return Number.NaN;
-			}
-			else {
+			} else {
 				return (num1 + num2 + num3) / 3;
 			}			
 		}
 
+		//JG: Nice list of test cases
 		console.log(avgOfThree(5, 10, 15));
 		console.log(avgOfThree('a', 10, 15));
 		console.log(avgOfThree(5, 'b', 15));
 		console.log(avgOfThree(5, 10, 'c'));
 		
+		//JG: Something to think about: 
+		// How would you make an "average" function that accepts any number of "num" arguments? 
+		// Hint: It won't work if you define the argument names.
+
+		// console.log(avg(1, 2));
+		// console.log(avg(1, 2, 3, 4, 5));
+		// console.log(avg(1, 2, 3));
+
 		// Problem 6
 
 		console.log('JavaScript has been easy for me over the past few weeks. The hardest part for me to understand was closure.');
+
+		//JG: I'm glad you're understanding the material. Closures are a difficult concept even for me. Not all languages use this concept. I think closures have gotten more popular over the years thanks to jQuery. 
+
+		// Keep up the good work!
 
 	</script>
 
