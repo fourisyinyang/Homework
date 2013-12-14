@@ -29,52 +29,36 @@
 
 // Inject onto page using the W3C API
 
-document.getElementById('w3c').onclick = function() {
+var modal, mask, word, definition, wordTextNode, definitionTextNode, boldTag, dlTag, dtTag, ddTag;
 
-	var modal, mask, word, definition, wordTextNode, definitionTextNode, boldTag, dlTag, dtTag, ddTag;
+// Create text node
+word = 'Palindrome';
+wordTextNode = document.createTextNode(word);
+definition = 'A word (such as "level"), a compound (such as "race car"), or a longer statement that communicates the same message when the letters of which it is composed are read in reverse order.The most famous palindrome is MADAM, IM ADAM (Adam\'s introduction of himself, in English, of course how convenient to Eve, the mother of all palindromes), but my personal favorite is the wiggy, loopy, lunatic GO HANG A SALAMI. IM A LASAGNA HOG. And let\'s tip our collective hat to the astonishingly long yet coherent DOC, NOTE, I DISSENT. A FAST NEVER PREVENTS A FATNESS. I DIET ON COD.';
+definitionTextNode = document.createTextNode(definition);
 
-	// Create text node
-	word = 'Palindrome';
-	wordTextNode = document.createTextNode(word);
-	definition = 'A word (such as "level"), a compound (such as "race car"), or a longer statement that communicates the same message when the letters of which it is composed are read in reverse order.The most famous palindrome is MADAM, IM ADAM (Adam\'s introduction of himself, in English, of course how convenient to Eve, the mother of all palindromes), but my personal favorite is the wiggy, loopy, lunatic GO HANG A SALAMI. IM A LASAGNA HOG. And let\'s tip our collective hat to the astonishingly long yet coherent DOC, NOTE, I DISSENT. A FAST NEVER PREVENTS A FATNESS. I DIET ON COD.';
-	definitionTextNode = document.createTextNode(definition);
+// Create bold tag
+boldTag = document.createElement('strong');
 
-	// Create mask
-	mask = document.createElement('div');
-	mask.setAttribute('id', 'mask');
-	mask.setAttribute('style', 'display: block;');
+// Create definition list tag
+dlTag = document.createElement('dl');
 
-	// Append mask node to the page
-	document.body.appendChild(mask);
+// Create definition term tag
+dtTag = document.createElement('dt');
 
-	// Create modal
-	modal = document.createElement('div');
-	modal.setAttribute('id', 'modal');
-	modal.setAttribute('style', 'display: block;');
+// Create definition description tag
+ddTag = document.createElement('dd');
 
-	// Create bold tag
-	boldTag = document.createElement('strong');
+// Attach definition list and textnode to the modal node
+dlTag.appendChild(dtTag);
+dtTag.appendChild(boldTag);
+boldTag.appendChild(wordTextNode);
+dlTag.appendChild(ddTag);
+ddTag.appendChild(definitionTextNode);
 
-	// Create definition list tag
-	dlTag = document.createElement('dl');
+// Append node to page
+document.body.appendChild(dlTag);
 
-	// Create definition term tag
-	dtTag = document.createElement('dt');
-
-	// Create definition description tag
-	ddTag = document.createElement('dd');
-
-	// Attach definition list and textnode to the modal node
-	modal.appendChild(dlTag);
-	dlTag.appendChild(dtTag);
-	dtTag.appendChild(boldTag);
-	boldTag.appendChild(wordTextNode);
-	dlTag.appendChild(ddTag);	
-	ddTag.appendChild(definitionTextNode);
-
-	// Append node to page
-	document.body.appendChild(modal);
-};
 
 
 // Problem 2
@@ -83,17 +67,14 @@ document.getElementById('w3c').onclick = function() {
 // property of the DIV with id="definitions".
 
 // Inject onto page using innerHTML
-document.getElementById('innerHTML').onclick = function() {
 
-	var definitions;
+var definitions;
 
-	// Find a parent container to insert into
-	definitions = document.getElementById('definitions');
+// Find a parent container to insert into
+definitions = document.getElementById('definitions');
 
-	// Change the inner HTML of that definitions node
-	definitions.innerHTML += '<div id="mask"></div>';
-	definitions.innerHTML += '<div id="modal"><dl><dt><strong>Palindrome</strong></dt><dd>A word (such as "level"), a compound (such as "race car"), or a longer statement that communicates the same message when the letters of which it is composed are read in reverse order.The most famous palindrome is MADAM, IM ADAM (Adam\'s introduction of himself, in English, of course how convenient to Eve, the mother of all palindromes), but my personal favorite is the wiggy, loopy, lunatic GO HANG A SALAMI. IM A LASAGNA HOG. And let\'s tip our collective hat to the astonishingly long yet coherent DOC, NOTE, I DISSENT. A FAST NEVER PREVENTS A FATNESS. I DIET ON COD.</dd></dl></div>';
-};
+// Change the inner HTML of that definitions node
+definitions.innerHTML += '<dl><dt><strong>Palindrome</strong></dt><dd>A word (such as "level"), a compound (such as "race car"), or a longer statement that communicates the same message when the letters of which it is composed are read in reverse order.The most famous palindrome is MADAM, IM ADAM (Adam\'s introduction of himself, in English, of course how convenient to Eve, the mother of all palindromes), but my personal favorite is the wiggy, loopy, lunatic GO HANG A SALAMI. IM A LASAGNA HOG. And let\'s tip our collective hat to the astonishingly long yet coherent DOC, NOTE, I DISSENT. A FAST NEVER PREVENTS A FATNESS. I DIET ON COD.</dd></dl>';
 
 // Problem 3
 
@@ -102,10 +83,7 @@ document.getElementById('innerHTML').onclick = function() {
 // Just worry about the code that does the text appending.
 
 //jQuery approach
-$('#jQuery').on('click', function() {
-	// Locate the parent container by way of a CSS selector
-	// Afterwards, append each HTML snippet one by one
-	$('#definitions')
-		.append('<div id="mask"></div>')
-		.append('<div id="modal"><dl><dt><strong>Palindrome</strong></dt><dd>A word (such as "level"), a compound (such as "race car"), or a longer statement that communicates the same message when the letters of which it is composed are read in reverse order.The most famous palindrome is MADAM, IM ADAM (Adam\'s introduction of himself, in English, of course how convenient to Eve, the mother of all palindromes), but my personal favorite is the wiggy, loopy, lunatic GO HANG A SALAMI. IM A LASAGNA HOG. And let\'s tip our collective hat to the astonishingly long yet coherent DOC, NOTE, I DISSENT. A FAST NEVER PREVENTS A FATNESS. I DIET ON COD.</dd></dl></div>');
-})
+// Locate the parent container by way of a CSS selector
+// Afterwards, append each HTML snippet one by one
+$('#definitions')
+	.append('<dl><dt><strong>Palindrome</strong></dt><dd>A word (such as "level"), a compound (such as "race car"), or a longer statement that communicates the same message when the letters of which it is composed are read in reverse order.The most famous palindrome is MADAM, IM ADAM (Adam\'s introduction of himself, in English, of course how convenient to Eve, the mother of all palindromes), but my personal favorite is the wiggy, loopy, lunatic GO HANG A SALAMI. IM A LASAGNA HOG. And let\'s tip our collective hat to the astonishingly long yet coherent DOC, NOTE, I DISSENT. A FAST NEVER PREVENTS A FATNESS. I DIET ON COD.</dd></dl>');
