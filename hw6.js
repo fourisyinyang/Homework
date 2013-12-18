@@ -22,7 +22,7 @@ console.log(document.querySelectorAll('.highlight'));
 
 // Any element under a form tag (hint: the asterisk is the wild card in CSS)
 
-console.log(document.querySelectorAll('form > *'));
+console.log(document.querySelectorAll('form *'));
 
 // All elements with the IDs "movies", "companies", or "fast_food" 
 // (hint: use the comma to separate selectors)
@@ -35,7 +35,7 @@ console.log(document.querySelectorAll('[id]'));
 
 // All elements that have an ID attribute that ends with the letter "s"
 
-console.log(document.querySelectorAll('[id $= s]'));
+console.log(document.querySelectorAll('[id$=s]'));
 
 // The first child LI element of all lists, ordered or unordered
 
@@ -47,11 +47,13 @@ console.log(document.querySelectorAll('ol > li:nth-child(2), ul > li:nth-child(2
 
 // All elements that are empty
 
-console.log(document.querySelectorAll('*:empty'));  //Is this right? My console log is diplaying the last p tag which is empty, but as well as the entire form. I can image this is happening because the form has not yet being filled and simply of being hidden.
+console.log(document.querySelectorAll(':empty'));
+//Is this right? My console log is diplaying the last p tag which is empty, but as well as the entire form. I can image this is happening because the form has not yet being filled and simply of being hidden.
+//JG: That's odd. I don't see the form being returned from this selector.
 
 // All elements that are checked
 
-console.log(document.querySelectorAll('*:checked'));
+console.log(document.querySelectorAll(':checked'));
 
 // All radio buttons
 
@@ -63,7 +65,7 @@ console.log(document.querySelectorAll('[type=radio]:checked'));
 
 // All TDs that represent the 2nd column in the table with ID "names"
 
-console.log(document.querySelectorAll('#names>tbody>tr>td:nth-child(2)'));
+console.log(document.querySelectorAll('#names > tbody > tr > td:nth-child(2)'));
 
 // All elements with the class name "hidden" that are not form elements
 
@@ -71,11 +73,11 @@ console.log(document.querySelectorAll('.hidden:not(form)'));
 
 // All even TRs that are descendants of a TBODY
 
-console.log(document.querySelectorAll('tbody>tr:nth-child(even)'));
+console.log(document.querySelectorAll('tbody > tr:nth-child(even)'));
 
 // All odd TRs that are descendants of a TBODY
 
-console.log(document.querySelectorAll('tbody>tr:nth-child(odd)'));
+console.log(document.querySelectorAll('tbody > tr:nth-child(odd)'));
 
 
 // OPTIONAL: Using what you know about arrays and accessing the DOM, write a function 
@@ -144,9 +146,9 @@ for(i = 0; i < arrayOfLastNamesInTD.length; i++) {
 getLastName(arrayOfLastNamesInTD);
 bubbleSort(arrayOfLastName);
 
-for(i = 0; i < arrayOfLastName.length; i++) {
+for (i = 0; i < arrayOfLastName.length; i++) {
 
-   console.log(arrayOfLastName[i]);
+	console.log(arrayOfLastName[i]);
 } // Sorted by last name
 
 for (i = 0; i < arrayOfLastName.length; i++) {
@@ -154,24 +156,24 @@ for (i = 0; i < arrayOfLastName.length; i++) {
 	for (j = 0; j < arrayOfLastName.length; j++) {
 
 		if (arrayOfLastNamesInTD[j].innerHTML === arrayOfLastName[i]) {
-				newArray[i] = arrayOfTR[j].innerHTML;				
-			}
+			newArray[i] = arrayOfTR[j].innerHTML;
+		}
 	}
 
 } // Putting sorted last name back with their associated Tr items
 
 
-for(i = 0; i < newArray.length; i++) {
+for (i = 0; i < newArray.length; i++) {
 
-   console.log(newArray[i]);
+	console.log(newArray[i]);
 } // Sorted by last name with td tags
 
 // I got stuck here. Didn't know how to append what I have done back to the html page.
 
-var newTBodyTag = document.createElement('tbody'), 
-	newTRTag = document.createElement('tr'), 
-	newTDTag1 = document.createElement('td'), 
-	newTDTag2 = document.createElement('td'), 
+var newTBodyTag = document.createElement('tbody'),
+	newTRTag = document.createElement('tr'),
+	newTDTag1 = document.createElement('td'),
+	newTDTag2 = document.createElement('td'),
 	newTDTag3 = document.createElement('td');
 
 /*var oldtbody = document.querySelector('tbody');
@@ -190,27 +192,27 @@ oldtbody.parentNode.removeChild(oldtbody);*/ // Remove tbody from html
 
 function getLastName(arr) {
 
-	for(i = 0; i < arrayOfLastNamesInTD.length; i++) {
+	for (i = 0; i < arrayOfLastNamesInTD.length; i++) {
 
-   		arrayOfLastName[i] = arrayOfLastNamesInTD[i].innerHTML;   		
-      
+		arrayOfLastName[i] = arrayOfLastNamesInTD[i].innerHTML;
+
 	}
 } // Extract last names to an array
 
-function bubbleSort(a)
-{
-    var swapped;
-    do {
-        swapped = false;
-        for(i = 0; i < a.length - 1; i++) {
-            if (a[i] > a[i + 1]) {
-                var temp = a[i];
-                a[i] = a[i + 1];
-                a[i + 1] = temp;
-                swapped = true;
-            }
-        }
-    } while (swapped);
+function bubbleSort(a) {
+	var swapped;
+	do {
+		swapped = false;
+		for (i = 0; i < a.length - 1; i++) {
+			if (a[i] > a[i + 1]) {
+				var temp = a[i];
+				a[i] = a[i + 1];
+				a[i + 1] = temp;
+				swapped = true;
+			}
+		}
+	} while (swapped);
 } // Bubble sort
 
- // I gave up after 6 to 7 hours of try and error. I know I am doing something wrong and might have came up with some stupid algorithm. I am sure there is better and more efficient way to do this. I am beat.
+// I gave up after 6 to 7 hours of try and error. I know I am doing something wrong and might have came up with some stupid algorithm. I am sure there is better and more efficient way to do this. I am beat.
+//JG: I'm glad you gave it a shot!
