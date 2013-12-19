@@ -12,8 +12,8 @@ form.addEventListener('submit', function(e) {
 	// Regular expression patterns
 	// I cheated, no way I could come up with some of these, had to google
 	// When I was testing first and last name, I keep getting error when using the same namePattern variable. It went away when I created a second identical variable. Samething to home and mobile phone number. Hence the double declaration of namePattern and phonePattern. Why do I have to do that?
-	namePattern = /^[a-z'-]+$/igm;
-	namePattern2 = /^[a-z'-]+$/igm;
+	//JG: This is one of those regular expressions gotchas I forgot about. To fix the bug remove the "g" flag. "g" means global, and for whatever reason the global flag acts strange when you run the regular expression more than once.
+	namePattern = /^[a-z'-]+$/im;
 	agePattern = /^[0-9]+$/igm;
 	emailPattern = /[a-z0-9_\-.]+@[a-z0-9]+\.[a-z]{2,}(.[a-z]{2,})?/igm;
 	urlPattern = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/igm;
@@ -34,7 +34,7 @@ form.addEventListener('submit', function(e) {
 	if (this.last_name.value === '') {
 		errors.push('Last name is required');
 	} else {
-		if (namePattern2.test(this.last_name.value) === false) {
+		if (namePattern.test(this.last_name.value) === false) {
 			errors.push('Last name is invalid');
 		} else if (this.last_name.value.length > 50) {
 			errors.push('Last name can not be greater than 50 characters long');
@@ -42,16 +42,14 @@ form.addEventListener('submit', function(e) {
 	}
 
 	// Make sure age is a number between 18 to 100 if entered
-	if (this.age.value !== '') {
-		if (agePattern.test(this.age.value) === true) {
-			if (this.age.value < 18) {
-				errors.push('You must be over 18 years old to join this conference');
-			} else if (this.age.value > 100) {
-				errors.push('I am sorry but you better stay home');
-			}
-		} else {
-			errors.push('Something wrong with your age?');
+	if (agePattern.test(this.age.value) === true) {
+		if (this.age.value < 18) {
+			errors.push('You must be over 18 years old to join this conference');
+		} else if (this.age.value > 100) {
+			errors.push('I am sorry but you better stay home');
 		}
+	} else {
+		errors.push('Something wrong with your age?');
 	}
 
 	// Make sure e-mail is entered and valid
@@ -69,6 +67,7 @@ form.addEventListener('submit', function(e) {
 	}
 
 	// I think this does the job too?
+	//JG: Yes, this should work. It doesn't hurt to test in IE just to make sure.
 	/*var temp = document.getElementById('level')
 
 	if (temp.options[temp.selectedIndex].value === '') {
@@ -86,29 +85,24 @@ form.addEventListener('submit', function(e) {
 			errors.push('Biography cannot be longer than 140 characters');
 		}
 		/*else if (wordCount < 3) {
-			error.push('Biography should be at least 3 words in length');
+			errors.push('Biography should be at least 3 words in length');
 		}	*/
 		// Couldn't get the word count to work
+		//JG: What you have looks correct. I just fixed the variable error to errors.
 	}
 
 	// Make sure personal website is valid
-	if (this.website.value !== '') {
-		if (urlPattern.test(this.website.value) === false) {
-			errors.push('Invalid url entered');
-		}
+	if (urlPattern.test(this.website.value) === false) {
+		errors.push('Invalid url entered');
 	}
 
 	// Make sure both home phone and mobile phone numbers are valid
-	if (this.homePhone.value !== '') {
-		if (phonePattern.test(this.homePhone.value) === false) {
-			errors.push('Invalid home phone number entered');
-		}
+	if (phonePattern.test(this.homePhone.value) === false) {
+		errors.push('Invalid home phone number entered');
 	}
 
-	if (this.mobilePhone.value !== '') {
-		if (phonePattern2.test(this.mobilePhone.value) === false) {
-			errors.push('Invalid mobile phone number entered');
-		}
+	if (phonePattern2.test(this.mobilePhone.value) === false) {
+		errors.push('Invalid mobile phone number entered');
 	}
 
 	// Make sure meal preference is selected
@@ -120,11 +114,6 @@ form.addEventListener('submit', function(e) {
 	if (document.querySelectorAll('[name=skills]:checked').length === 0) {
 		errors.push('Please select at least one skill set');
 	}
-
-	// Datepicker
-	$(function() {
-		$('#doa').datepicker();
-	});
 
 	//If any inputs failed prevent form submit
 	if (errors.length > 0) {
@@ -138,3 +127,9 @@ form.addEventListener('submit', function(e) {
 		errorDiv.innerHTML = errors.join('<br>');
 	}
 }, false);
+
+
+// Datepicker
+$(function() {
+	$('#doa').datepicker();
+});
