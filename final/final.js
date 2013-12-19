@@ -1,9 +1,8 @@
-
 // Form validation
 
 var form = document.querySelector('form');
 
-form.addEventListener('submit', function (e) {
+form.addEventListener('submit', function(e) {
 
 	var errors, errorDiv, namePattern, namePattern2, agePattern, emailPattern, urlPattern, phonePattern, phonePattern2;
 
@@ -27,7 +26,7 @@ form.addEventListener('submit', function (e) {
 	} else {
 		if (namePattern.test(this.first_name.value) === false) {
 			errors.push('First name is invalid');
-		}else if (this.first_name.value.length > 50) {
+		} else if (this.first_name.value.length > 50) {
 			errors.push('First name can not be greater than 50 characters long');
 		}
 	}
@@ -37,7 +36,7 @@ form.addEventListener('submit', function (e) {
 	} else {
 		if (namePattern2.test(this.last_name.value) === false) {
 			errors.push('Last name is invalid');
-		}else if (this.last_name.value.length > 50) {
+		} else if (this.last_name.value.length > 50) {
 			errors.push('Last name can not be greater than 50 characters long');
 		}
 	}
@@ -50,14 +49,14 @@ form.addEventListener('submit', function (e) {
 			} else if (this.age.value > 100) {
 				errors.push('I am sorry but you better stay home');
 			}
-		}else {
+		} else {
 			errors.push('Something wrong with your age?');
-		} 
-	}	
+		}
+	}
 
 	// Make sure e-mail is entered and valid
 	if (this.email.value === '') {
-		errors.push('Email address is required');	
+		errors.push('Email address is required');
 	} else {
 		if (emailPattern.test(this.email.value) === false) {
 			errors.push('Invalid e-mail address');
@@ -65,7 +64,7 @@ form.addEventListener('submit', function (e) {
 	}
 
 	// Make sure experience level is selected
-	if (document.getElementById('level').selectedIndex === 0){
+	if (document.getElementById('level').selectedIndex === 0) {
 		errors.push('Please select an experience level');
 	}
 
@@ -85,7 +84,8 @@ form.addEventListener('submit', function (e) {
 	} else {
 		if (bio.value.length > 140) {
 			errors.push('Biography cannot be longer than 140 characters');
-		} /*else if (wordCount < 3) {
+		}
+		/*else if (wordCount < 3) {
 			error.push('Biography should be at least 3 words in length');
 		}	*/
 		// Couldn't get the word count to work
@@ -95,7 +95,7 @@ form.addEventListener('submit', function (e) {
 	if (this.website.value !== '') {
 		if (urlPattern.test(this.website.value) === false) {
 			errors.push('Invalid url entered');
-		} 
+		}
 	}
 
 	// Make sure both home phone and mobile phone numbers are valid
@@ -123,8 +123,8 @@ form.addEventListener('submit', function (e) {
 
 	// Datepicker
 	$(function() {
-    $('#doa').datepicker();
-  	});
+		$('#doa').datepicker();
+	});
 
 	//If any inputs failed prevent form submit
 	if (errors.length > 0) {
